@@ -8,6 +8,10 @@
     color: #6F52ED;
 }
 
+p {
+    margin: 0;
+}
+
 .progress-bar {
     box-shadow: none;
     border-radius: 2px;

@@ -1,13 +1,31 @@
 {% extends '_base.html' %}
 {% block content %}
     <div>
-        <h3>Home</h3>
-        <div class="server-data-container disk">
-            <p class="stab-label">
-                Disk Used <span class="value">0%</span></p>
-            <div class="progress-bar">
-                <div class="progress-value" data-value="0" style="width:0%;"></div>
+        <h3>{{ last_repo.name }}</h3>
+        <div class="row">
+            <div class="col s3">
+                <div class="server-data-container disk">
+                    <p class="stab-label">
+                        Disk Used <span class="value">{{ last_repo.disk_usage }}%</span></p>
+                    <div class="progress-bar">
+                        <div class="progress-value" data-value="{{ last_repo.disk_usage }}" style="width:0%;"></div>
+                    </div>
+                </div>
+                <div class="server-data-container disk" style="margin-top: 12px">
+                    <p class="stab-label">
+                        Latency <span class="value">{{ last_repo.latency }} ms</span></p>
+                    <div class="progress-bar">
+                        <div class="progress-value" data-value="{{ last_repo.latency }}" style="width:0%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s9">
+                <canvas id="myChart" width="400" height="400"></canvas>
+                
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        var REPORT_DATA = {{ total_value|safe }};
+    </script>
 {% endblock %}
